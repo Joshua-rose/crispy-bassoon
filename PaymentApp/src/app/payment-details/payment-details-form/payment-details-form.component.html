@@ -1,0 +1,28 @@
+<form>
+    <input type="hidden" name="paymentDetailId" [value]="service.formData.paymentDetailId" />
+    <div class="form-group">
+        <label for="cardOwnerName">CARD OWNER NAME</label>
+        <input  name="cardOwnerName" class="form-control form-control-lg"
+        placeholder="Full Name" #cardOwnerName="ngModel" [(ngModel)]="service.formData.cardOwnerName" />
+    </div>
+    <div class="form-group">
+        <label for="cardNumber">CARD NUMBER</label>
+        <input  name="cardNumber" class="form-control form-control-lg"
+        placeholder="16 Digit Card Number" #cardNumber="ngModel" [(ngModel)]="service.formData.cardNumber" />
+    </div>
+    <div class="form-row">
+
+        <div class="form-group col-md-6">
+            <label for="securityCode">SECURITY CODE</label>
+            <input type="password" name="securityCode" class="form-control form-control-lg"
+            placeholder="Full Name" #securityCode="ngModel" [(ngModel)]="service.formData.securityCode" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="expirationDate">VALID THROUGH</label>
+            <input  name="expirationDate" class="form-control form-control-lg"
+            placeholder="MM/YY" #expirationDate="ngModel" [(ngModel)]="service.formData.expirationDate" />
+        </div>
+    </div>
+
+
+</form>
