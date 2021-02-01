@@ -1,28 +1,29 @@
-<form>
+<form novalidate #form="ngForm" (submit)="onSubmit(form)">
     <input type="hidden" name="paymentDetailId" [value]="service.formData.paymentDetailId" />
     <div class="form-group">
         <label for="cardOwnerName">CARD OWNER NAME</label>
         <input  name="cardOwnerName" class="form-control form-control-lg"
-        placeholder="Full Name" #cardOwnerName="ngModel" [(ngModel)]="service.formData.cardOwnerName" />
+        placeholder="Full Name" #cardOwnerName="ngModel" [(ngModel)]="service.formData.cardOwnerName" requried [class.invalid]="cardOwnerName.invalid && cardOwnerName.touched"/>
     </div>
     <div class="form-group">
         <label for="cardNumber">CARD NUMBER</label>
         <input  name="cardNumber" class="form-control form-control-lg"
-        placeholder="16 Digit Card Number" #cardNumber="ngModel" [(ngModel)]="service.formData.cardNumber" />
+        placeholder="16 Digit Card Number" #cardNumber="ngModel" [(ngModel)]="service.formData.cardNumber" requried maxlength="16" minlength="16" [class.invalid]="cardNumber.invalid && cardNumber.touched"/>
     </div>
     <div class="form-row">
 
         <div class="form-group col-md-6">
             <label for="securityCode">SECURITY CODE</label>
             <input type="password" name="securityCode" class="form-control form-control-lg"
-            placeholder="Full Name" #securityCode="ngModel" [(ngModel)]="service.formData.securityCode" />
+            placeholder="Security Code" #securityCode="ngModel" [(ngModel)]="service.formData.securityCode" requried maxlength="3" minlength="3" [class.invalid]="securityCode.invalid && securityCode.touched"/>
         </div>
         <div class="form-group col-md-6">
             <label for="expirationDate">VALID THROUGH</label>
             <input  name="expirationDate" class="form-control form-control-lg"
-            placeholder="MM/YY" #expirationDate="ngModel" [(ngModel)]="service.formData.expirationDate" />
+            placeholder="MM/YY" #expirationDate="ngModel" [(ngModel)]="service.formData.expirationDate" requried maxlength="5" minlength="5" [class.invalid]="expirationDate.invalid && expirationDate.touched"/>
         </div>
     </div>
-
-
+    <div class="form-group">
+        <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">SUBMIT</button>
+    </div>
 </form>
